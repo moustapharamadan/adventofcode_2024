@@ -1,8 +1,8 @@
 use anyhow::Result;
 use std::{collections::HashMap, fs};
 
-fn parse_input(input: &str) -> Result<(Vec<i32>, Vec<i32>)> {
-    let content = fs::read_to_string(input)?;
+fn parse_input(path: &str) -> Result<(Vec<i32>, Vec<i32>)> {
+    let content = fs::read_to_string(path)?;
 
     let mut col1 = Vec::new();
     let mut col2 = Vec::new();
@@ -20,8 +20,8 @@ fn parse_input(input: &str) -> Result<(Vec<i32>, Vec<i32>)> {
 
     Ok((col1, col2))
 }
-pub fn part1(input: &str) -> Result<u32> {
-    let (mut col1, mut col2) = parse_input(input)?;
+pub fn part1(path: &str) -> Result<u32> {
+    let (mut col1, mut col2) = parse_input(path)?;
 
     col1.sort();
     col2.sort();
@@ -33,8 +33,8 @@ pub fn part1(input: &str) -> Result<u32> {
         .sum());
 }
 
-pub fn part2(input: &str) -> Result<i32> {
-    let (col1, col2) = parse_input(input)?;
+pub fn part2(path: &str) -> Result<i32> {
+    let (col1, col2) = parse_input(path)?;
 
     let value_count_map = col2.iter().fold(HashMap::new(), |mut acc, value| {
         *acc.entry(value).or_insert(0) += 1;

@@ -1,8 +1,8 @@
 use anyhow::Result;
 use std::fs;
 
-fn parse_input(input: &str) -> Result<Vec<Vec<i32>>> {
-    let content = fs::read_to_string(input)?;
+fn parse_input(path: &str) -> Result<Vec<Vec<i32>>> {
+    let content = fs::read_to_string(path)?;
 
     let mut result = Vec::new();
     for row in content.lines() {
@@ -59,16 +59,16 @@ fn is_safe(row: &Vec<i32>, recursive: bool) -> bool {
     true
 }
 
-pub fn part1(input: &str) -> Result<u32> {
-    let input = parse_input(input)?;
+pub fn part1(path: &str) -> Result<u32> {
+    let input = parse_input(path)?;
     Ok(input
         .iter()
         .map(|row| if is_safe(&row, false) { 1 } else { 0 })
         .sum())
 }
 
-pub fn part2(input: &str) -> Result<u32> {
-    let input = parse_input(input)?;
+pub fn part2(path: &str) -> Result<u32> {
+    let input = parse_input(path)?;
     Ok(input
         .iter()
         .map(|row| if is_safe(&row, true) { 1 } else { 0 })

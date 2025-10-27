@@ -1,16 +1,19 @@
 use anyhow::Result;
-use std::fs;
 use regex::Regex;
+use std::fs;
 
 pub fn part1(path: &str) -> Result<i32> {
     let content = fs::read_to_string(path)?;
     let re = Regex::new(r"mul\((\d+),(\d+)\)")?;
 
-    Ok(re.captures_iter(&content).map(|cap| {
-        let num1: i32 = cap[1].parse().expect("Expected integer");
-        let num2: i32 = cap[2].parse().expect("Expected integer");
-        return num1*num2;
-    }).sum())
+    Ok(re
+        .captures_iter(&content)
+        .map(|cap| {
+            let num1: i32 = cap[1].parse().expect("Expected integer");
+            let num2: i32 = cap[2].parse().expect("Expected integer");
+            return num1 * num2;
+        })
+        .sum())
 }
 
 pub fn part2(path: &str) -> Result<i32> {
@@ -37,18 +40,18 @@ pub fn part2(path: &str) -> Result<i32> {
 }
 
 #[cfg(test)]
-mod tests{
+mod tests {
     use super::*;
 
     #[test]
-    fn test_part1(){
+    fn test_part1() {
         let result = part1("data/example/day3_part1.txt");
         assert!(result.is_ok());
         assert_eq!(result.unwrap(), 161);
     }
 
     #[test]
-    fn test_part2(){
+    fn test_part2() {
         let result = part2("data/example/day3_part2.txt");
         assert!(result.is_ok());
         assert_eq!(result.unwrap(), 48);

@@ -3,6 +3,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 
 fn main() {
     println!("Day1 Part1: {:?}", day1::part1("data/input/day1.txt"));
@@ -23,4 +24,7 @@ fn main() {
         day5::part1_new("data/input/day5.txt")
     );
     println!("Day5 Part2: {:?}", day5::part2("data/input/day5.txt"));
+
+    println!("Day6 Part1: {:?}", day6::part1("data/input/day6.txt"));
+    // println!("Day6 Part2: {:?}", day6::part2("data/input/day6.txt"));
 }

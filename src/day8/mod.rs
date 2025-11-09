@@ -1,5 +1,5 @@
 use anyhow::Result;
-use std::{collections::HashMap, fs, os::macos};
+use std::{collections::HashMap, fs};
 
 fn parse(path: &str) -> Result<Vec<Vec<char>>> {
     let content = fs::read_to_string(path)?;
